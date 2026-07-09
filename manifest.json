@@ -2,7 +2,7 @@
   "name": "Casino Royale Suite",
   "short_name": "Casino Royale",
   "description": "Lokaler Casino-Simulator: Blackjack, Roulette, Slots und Texas Hold'em mit virtuellen Chips.",
-  "start_url": "./casino-simulator.html",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
