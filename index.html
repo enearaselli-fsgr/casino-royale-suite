@@ -384,6 +384,111 @@
   .memory-grid .card.revealed{ display:flex; align-items:center; justify-content:center; font-size:28px; animation:none; }
   .memory-grid .card.matched{ opacity:.4; cursor:default; }
 
+  /* ---------- LOBBY-KATEGORIEN ---------- */
+  .category-heading{
+    display:flex; align-items:center; gap:10px; margin:34px 0 14px;
+    color:var(--gold-light); font-size:14px; letter-spacing:.1em; text-transform:uppercase;
+  }
+  .category-heading::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg,var(--panel-border),transparent); }
+  .category-heading:first-of-type{ margin-top:6px; }
+
+  /* ---------- WÜRFEL (Craps & Sic Bo) ---------- */
+  .dice-row{ display:flex; gap:14px; justify-content:center; margin:14px 0; min-height:64px; }
+  .die{
+    width:58px; height:58px; background:var(--cream); border-radius:12px; position:relative;
+    box-shadow:0 4px 12px var(--shadow); border:1px solid #d8cba0;
+    display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr);
+    padding:9px; transition:transform .15s ease;
+  }
+  .die.rolling{ animation:dieRoll .5s ease infinite; }
+  @keyframes dieRoll{ 0%{transform:rotate(0deg);} 50%{transform:rotate(180deg) scale(1.05);} 100%{transform:rotate(360deg);} }
+  .die .pip{ width:9px; height:9px; border-radius:50%; background:#1c1611; align-self:center; justify-self:center; opacity:0; }
+  .die .pip.on{ opacity:1; }
+
+  /* ---------- CRAPS ---------- */
+  .craps-status{ text-align:center; margin:6px 0 14px; }
+  .craps-status .point-badge{
+    display:inline-block; background:var(--gold-light); color:#241608; font-weight:800; font-size:13px;
+    padding:5px 16px; border-radius:20px; box-shadow:0 3px 8px var(--shadow);
+  }
+  .craps-bet-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:14px 0; }
+  .craps-bet-cell{
+    position:relative; background:var(--panel); border:1px solid var(--panel-border); border-radius:10px;
+    padding:14px 10px; text-align:center; cursor:pointer; transition:filter .1s ease;
+  }
+  .craps-bet-cell:hover{ filter:brightness(1.2); }
+  .craps-bet-cell .label{ font-weight:700; font-size:13.5px; color:var(--gold-light); }
+  .craps-bet-cell .sub{ font-size:11px; color:#a9c3b3; margin-top:2px; }
+  .craps-bet-cell .chip-indicator{ top:-8px; right:8px; }
+
+  /* ---------- BACCARAT ---------- */
+  .bacc-row{ text-align:center; margin-bottom:14px; }
+  .bacc-row .hand-label{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#a9c3b3; margin-bottom:6px; }
+  .bacc-bet-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+  .bacc-bet-cell{
+    position:relative; background:var(--panel); border:1px solid var(--panel-border); border-radius:10px;
+    padding:16px 10px; text-align:center; cursor:pointer; transition:filter .1s ease;
+  }
+  .bacc-bet-cell:hover{ filter:brightness(1.2); }
+  .bacc-bet-cell.player{ border-color:#3f7fe0; }
+  .bacc-bet-cell.banker{ border-color:var(--red-light); }
+  .bacc-bet-cell.tie{ border-color:var(--gold); }
+  .bacc-bet-cell .label{ font-weight:700; font-size:14px; }
+  .bacc-bet-cell .sub{ font-size:11px; color:#a9c3b3; margin-top:2px; }
+  .bacc-bet-cell .chip-indicator{ top:-8px; right:8px; }
+
+  /* ---------- VIDEO POKER ---------- */
+  .vp-hand{ display:flex; gap:10px; justify-content:center; margin:18px 0 8px; flex-wrap:wrap; }
+  .vp-slot{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .vp-hold-btn{
+    background:transparent; border:1px solid var(--gold-dark); color:#a9c3b3; font-size:11px; font-weight:700;
+    padding:5px 14px; border-radius:6px; letter-spacing:.05em;
+  }
+  .vp-hold-btn.held{ background:var(--gold-light); color:#241608; border-color:var(--gold-light); }
+  .vp-paytable{ margin-top:16px; background:var(--panel); border:1px solid var(--panel-border); border-radius:10px; padding:12px 16px; }
+  .vp-paytable table{ width:100%; border-collapse:collapse; font-size:12px; }
+  .vp-paytable td{ padding:3px 4px; color:#d8cfb5; }
+  .vp-paytable tr.active-tier td{ color:var(--gold-light); font-weight:700; }
+  .vp-paytable td.mult{ text-align:right; color:var(--gold-light); font-weight:700; }
+
+  /* ---------- KENO ---------- */
+  .keno-grid{ display:grid; grid-template-columns:repeat(10,1fr); gap:5px; margin:14px 0; }
+  .keno-cell{
+    aspect-ratio:1; background:var(--panel); border:1px solid var(--panel-border); border-radius:6px;
+    display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:700; color:#cdd9cf;
+    cursor:pointer; transition:filter .1s ease;
+  }
+  .keno-cell:hover{ filter:brightness(1.3); }
+  .keno-cell.picked{ background:linear-gradient(180deg,var(--gold-light),var(--gold-dark)); color:#241608; }
+  .keno-cell.drawn{ box-shadow:0 0 0 2px var(--win); }
+  .keno-cell.picked.drawn{ box-shadow:0 0 0 2px var(--win), 0 0 10px var(--win); }
+  .keno-controls{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:10px 0; }
+
+  /* ---------- SIC BO ---------- */
+  .sicbo-bet-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:10px 0; }
+  .sicbo-numbers-row{ display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin:10px 0; }
+  .sicbo-num-cell{
+    background:var(--panel); border:1px solid var(--panel-border); border-radius:8px; text-align:center;
+    padding:12px 4px; cursor:pointer; font-weight:700; position:relative;
+  }
+  .sicbo-num-cell:hover{ filter:brightness(1.2); }
+  .sicbo-num-cell .chip-indicator{ top:-8px; right:2px; }
+
+  /* ---------- STATISTIK ---------- */
+  .stats-page-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:10px; }
+  .stats-net-card{
+    text-align:center; padding:26px 20px; border-radius:14px; margin-bottom:22px;
+    background:radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.10), transparent 70%);
+    border:1px solid var(--panel-border);
+  }
+  .stats-net-card .net-value{ font-size:38px; font-weight:700; margin:6px 0; }
+  .stats-net-card .net-value.pos{ color:var(--win); }
+  .stats-net-card .net-value.neg{ color:var(--lose); }
+  .stats-net-card .net-sub{ font-size:12.5px; color:#a9c3b3; }
+  .stats-detail-row{ display:flex; justify-content:space-between; padding:8px 4px; border-bottom:1px dashed rgba(255,255,255,.08); font-size:13px; }
+  .stats-detail-row b{ color:var(--gold-light); }
+  .stats-reset-btn{ margin-top:22px; }
+
   footer{ text-align:center; font-size:11px; color:#6a8074; padding:20px 10px 30px; }
 
   @media (max-width:640px){
@@ -425,6 +530,12 @@
     .seat.seat-human .card.small .suit-mid{ font-size:19px; }
     .poker-community{ min-height:50px; flex-wrap:wrap; }
     .raise-panel input[type=range]{ width:140px; }
+    .keno-grid{ grid-template-columns:repeat(8,1fr); }
+    .keno-cell{ font-size:10px; }
+    .die{ width:46px; height:46px; padding:7px; }
+    .die .pip{ width:7px; height:7px; }
+    .craps-bet-grid, .bacc-bet-row{ grid-template-columns:1fr 1fr; }
+    .vp-hand{ gap:6px; }
   }
 
   @media (max-width:400px){
@@ -446,10 +557,7 @@
   </div>
   <nav class="tabs">
     <button class="nav-btn active" data-target="lobby">Lobby</button>
-    <button class="nav-btn" data-target="blackjack">Blackjack</button>
-    <button class="nav-btn" data-target="roulette">Roulette</button>
-    <button class="nav-btn" data-target="slots">Slots</button>
-    <button class="nav-btn" data-target="poker">Poker</button>
+    <button class="nav-btn" data-target="statistik">Statistik</button>
   </nav>
   <div class="balance-pill">
     <span class="chip-icon">🪙</span>
@@ -470,14 +578,12 @@
       <p>Ein rein virtuelles Spielkasino zur Unterhaltung. Alle Chips sind fiktiv, es wird kein echtes Geld eingesetzt oder ausgezahlt.</p>
       <div class="big-balance"><span class="balance-value">1000</span> Chips</div>
       <div class="stats-row">
-        <div class="stat-card"><div class="num" id="statHands">0</div><div class="lbl">BJ-Hände</div></div>
-        <div class="stat-card"><div class="num" id="statSpinsR">0</div><div class="lbl">Roulette-Spins</div></div>
-        <div class="stat-card"><div class="num" id="statSpinsS">0</div><div class="lbl">Slot-Spins</div></div>
-        <div class="stat-card"><div class="num" id="statPoker">0</div><div class="lbl">Poker-Hände</div></div>
+        <div class="stat-card"><div class="num" id="statNet">0</div><div class="lbl">Netto (siehe Statistik)</div></div>
         <div class="stat-card"><div class="num" id="statBiggest">0</div><div class="lbl">Größter Gewinn</div></div>
       </div>
     </div>
 
+    <h3 class="category-heading">🃏 Kartenspiele</h3>
     <div class="game-grid">
       <div class="game-card">
         <div class="icon">🃏</div>
@@ -486,16 +592,16 @@
         <button class="play-btn" data-target="blackjack">Spielen</button>
       </div>
       <div class="game-card">
-        <div class="icon">🎡</div>
-        <h3>Roulette</h3>
-        <p>Setze auf Zahlen, Farben oder Kombinationen und dreh das Rad. Europäisches Roulette mit einfacher Null.</p>
-        <button class="play-btn" data-target="roulette">Spielen</button>
+        <div class="icon">🀄</div>
+        <h3>Baccarat</h3>
+        <p>Spieler gegen Bank — wer kommt näher an 9? Klare Regeln, schnelles Tempo, dritte Karte nach festem Regelwerk.</p>
+        <button class="play-btn" data-target="baccarat">Spielen</button>
       </div>
       <div class="game-card">
-        <div class="icon">🎰</div>
-        <h3>Spielautomat</h3>
-        <p>Drei Walzen, sieben Symbole, ein Jackpot. Einfach Einsatz wählen und drehen.</p>
-        <button class="play-btn" data-target="slots">Spielen</button>
+        <div class="icon">🎴</div>
+        <h3>Video Poker</h3>
+        <p>5 Karten, halten oder tauschen. Gewinn nach klassischer Jacks-or-Better-Gewinntabelle.</p>
+        <button class="play-btn" data-target="videopoker">Spielen</button>
       </div>
       <div class="game-card">
         <div class="icon">♠️</div>
@@ -505,7 +611,83 @@
       </div>
     </div>
 
+    <h3 class="category-heading">🎲 Tischspiele</h3>
+    <div class="game-grid">
+      <div class="game-card">
+        <div class="icon">🎡</div>
+        <h3>Roulette</h3>
+        <p>Setze auf Zahlen, Farben oder Kombinationen und dreh das Rad. Europäisches Roulette mit einfacher Null.</p>
+        <button class="play-btn" data-target="roulette">Spielen</button>
+      </div>
+      <div class="game-card">
+        <div class="icon">🎲</div>
+        <h3>Craps</h3>
+        <p>Come-Out-Roll, Point machen oder Seven-Out. Pass Line, Don't Pass, Field und Place-Wetten.</p>
+        <button class="play-btn" data-target="craps">Spielen</button>
+      </div>
+      <div class="game-card">
+        <div class="icon">🎯</div>
+        <h3>Sic Bo</h3>
+        <p>Drei Würfel, viele Wettarten: Groß/Klein, Tripel, einzelne Zahlen. Schnell erklärt, schnell gespielt.</p>
+        <button class="play-btn" data-target="sicbo">Spielen</button>
+      </div>
+    </div>
+
+    <h3 class="category-heading">🎰 Automaten &amp; Zahlenspiele</h3>
+    <div class="game-grid">
+      <div class="game-card">
+        <div class="icon">🎰</div>
+        <h3>Spielautomat</h3>
+        <p>Drei Walzen, sieben Symbole, ein Jackpot. Einfach Einsatz wählen und drehen.</p>
+        <button class="play-btn" data-target="slots">Spielen</button>
+      </div>
+      <div class="game-card">
+        <div class="icon">🔢</div>
+        <h3>Keno</h3>
+        <p>Wähle bis zu 10 Zahlen von 1–80, 20 werden gezogen. Je mehr Treffer, desto höher die Auszahlung.</p>
+        <button class="play-btn" data-target="keno">Spielen</button>
+      </div>
+    </div>
+
     <p class="disclaimer">Dieses Spiel dient ausschließlich der Unterhaltung. Es werden keine echten Einsätze verarbeitet und keine Gewinne ausgezahlt. Bei aufgebrauchten Chips hilft nur eine kleine Aufgabe weiter — nachladen per Knopfdruck gibt es bewusst nicht.<br>Alle Daten (Chip-Guthaben, Statistiken) werden ausschließlich lokal in deinem Browser gespeichert.</p>
+  </section>
+
+  <!-- ================= STATISTIK ================= -->
+  <section id="statistik" hidden>
+    <div class="panel">
+      <div class="panel-header">
+        <h2>📊 Statistik</h2>
+        <button class="back-link" data-target="lobby">← Zurück zur Lobby</button>
+      </div>
+
+      <div class="stats-net-card">
+        <div class="net-sub">Netto seit Beginn (alle Spiele zusammen)</div>
+        <div class="net-value" id="statNetBig">0 Chips</div>
+        <div class="net-sub" id="statNetSub"></div>
+      </div>
+
+      <div class="stats-page-grid">
+        <div class="stat-card"><div class="num" id="statHands">0</div><div class="lbl">Blackjack-Hände</div></div>
+        <div class="stat-card"><div class="num" id="statSpinsR">0</div><div class="lbl">Roulette-Spins</div></div>
+        <div class="stat-card"><div class="num" id="statSpinsS">0</div><div class="lbl">Slot-Spins</div></div>
+        <div class="stat-card"><div class="num" id="statPoker">0</div><div class="lbl">Poker-Hände</div></div>
+        <div class="stat-card"><div class="num" id="statBaccarat">0</div><div class="lbl">Baccarat-Hände</div></div>
+        <div class="stat-card"><div class="num" id="statVideoPoker">0</div><div class="lbl">Video-Poker-Runden</div></div>
+        <div class="stat-card"><div class="num" id="statCraps">0</div><div class="lbl">Craps-Würfe</div></div>
+        <div class="stat-card"><div class="num" id="statKeno">0</div><div class="lbl">Keno-Ziehungen</div></div>
+        <div class="stat-card"><div class="num" id="statSicbo">0</div><div class="lbl">Sic-Bo-Würfe</div></div>
+        <div class="stat-card"><div class="num" id="statBiggest2">0</div><div class="lbl">Größter Gewinn</div></div>
+      </div>
+
+      <div style="margin-top:26px;">
+        <div class="stats-detail-row"><span>Gesamt gesetzt</span><b id="statTotalWagered">0 Chips</b></div>
+        <div class="stats-detail-row"><span>Gesamt gewonnen (ausgezahlt)</span><b id="statTotalWon">0 Chips</b></div>
+      </div>
+
+      <div style="text-align:center;">
+        <button class="action-btn secondary stats-reset-btn" id="statsResetBtn">Statistik zurücksetzen</button>
+      </div>
+    </div>
   </section>
 
   <!-- ================= BLACKJACK ================= -->
@@ -701,6 +883,218 @@
     </div>
   </section>
 
+  <!-- ================= BACCARAT ================= -->
+  <section id="baccarat" hidden>
+    <div class="panel">
+      <div class="panel-header">
+        <h2>🀄 Baccarat</h2>
+        <button class="back-link" data-target="lobby">← Zurück zur Lobby</button>
+      </div>
+
+      <details class="rule-hint">
+        <summary>Kurzregeln</summary>
+        <p>Setze auf Spieler, Bank oder Unentschieden (Tie). Kartenwert: Ass = 1, 2–9 = Wert, 10/Bube/Dame/König = 0. Nur die letzte Ziffer der Summe zählt. Bei 8 oder 9 mit den ersten zwei Karten ("Naturel") wird nicht mehr gezogen, sonst gilt ein festes Regelwerk für die dritte Karte. Spieler-Sieg zahlt 1:1, Bank-Sieg zahlt 0,95:1 (5% Kommission), Tie zahlt 8:1 — bei Tie bekommen Spieler-/Bank-Einsätze ihren Einsatz zurück.</p>
+      </details>
+
+      <div class="felt-table">
+        <div class="bacc-row">
+          <div class="hand-label">Spieler <span class="hand-total" id="baccPlayerTotal"></span></div>
+          <div class="card-strip" id="baccPlayerCards"></div>
+        </div>
+        <div class="bacc-row">
+          <div class="hand-label">Bank <span class="hand-total" id="baccBankerTotal"></span></div>
+          <div class="card-strip" id="baccBankerCards"></div>
+        </div>
+      </div>
+
+      <div class="message-bar" id="baccMessage">Setze auf Spieler, Bank oder Tie.</div>
+      <div class="bet-display">Einsatz: <b id="baccBetDisplay">0</b> Chips</div>
+
+      <div class="bacc-bet-row">
+        <div class="bacc-bet-cell player" data-bacc-bet="player"><div class="label">Spieler</div><div class="sub">zahlt 1:1</div><span class="chip-indicator"></span></div>
+        <div class="bacc-bet-cell tie" data-bacc-bet="tie"><div class="label">Tie</div><div class="sub">zahlt 8:1</div><span class="chip-indicator"></span></div>
+        <div class="bacc-bet-cell banker" data-bacc-bet="banker"><div class="label">Bank</div><div class="sub">zahlt 0,95:1</div><span class="chip-indicator"></span></div>
+      </div>
+
+      <div class="chip-row" id="baccChips">
+        <button class="chip-btn selected" data-val="10">10</button>
+        <button class="chip-btn" data-val="25">25</button>
+        <button class="chip-btn" data-val="50">50</button>
+        <button class="chip-btn" data-val="100">100</button>
+        <button class="chip-btn" data-val="500">500</button>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn secondary" id="baccClearBtn">Einsatz löschen</button>
+        <button class="action-btn" id="baccDealBtn">Geben</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIDEO POKER ================= -->
+  <section id="videopoker" hidden>
+    <div class="panel">
+      <div class="panel-header">
+        <h2>🎴 Video Poker — Jacks or Better</h2>
+        <button class="back-link" data-target="lobby">← Zurück zur Lobby</button>
+      </div>
+
+      <details class="rule-hint">
+        <summary>Kurzregeln</summary>
+        <p>Du bekommst 5 Karten. Wähle, welche du behalten willst ("Halten"), der Rest wird einmal getauscht. Die beste Endhand gewinnt nach Gewinntabelle — ab einem Paar Buben oder besser gibt es eine Auszahlung.</p>
+      </details>
+
+      <div class="felt-table">
+        <div class="vp-hand" id="vpHand"></div>
+      </div>
+
+      <div class="message-bar" id="vpMessage">Setze deinen Einsatz und drücke „Geben“.</div>
+      <div class="bet-display">Einsatz: <b id="vpBetDisplay">10</b> Chips</div>
+
+      <div class="chip-row" id="vpChips">
+        <button class="chip-btn selected" data-val="10">10</button>
+        <button class="chip-btn" data-val="25">25</button>
+        <button class="chip-btn" data-val="50">50</button>
+        <button class="chip-btn" data-val="100">100</button>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn" id="vpDealBtn">Geben</button>
+      </div>
+
+      <div class="vp-paytable">
+        <table id="vpPaytableBody"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CRAPS ================= -->
+  <section id="craps" hidden>
+    <div class="panel">
+      <div class="panel-header">
+        <h2>🎲 Craps</h2>
+        <button class="back-link" data-target="lobby">← Zurück zur Lobby</button>
+      </div>
+
+      <details class="rule-hint">
+        <summary>Kurzregeln</summary>
+        <p><b>Come-Out-Wurf:</b> Pass Line gewinnt bei 7/11, verliert bei 2/3/12. Bei 4,5,6,8,9,10 wird diese Zahl zum "Point". <b>Point-Phase:</b> Pass Line gewinnt, wenn der Point vor einer 7 nochmal fällt ("Point gemacht"), verliert bei einer 7 ("Seven-Out"). Don't Pass läuft spiegelverkehrt (12 im Come-Out ist Push). Field ist ein Ein-Wurf-Bet auf 2,3,4,9,10,11,12. Place 6/8 gewinnen, wenn ihre Zahl vor einer 7 fällt (zahlt 7:6).</p>
+      </details>
+
+      <div class="craps-status"><span class="point-badge" id="crapsPointBadge">Come-Out</span></div>
+
+      <div class="felt-table">
+        <div class="dice-row" id="crapsDiceRow"></div>
+      </div>
+
+      <div class="message-bar" id="crapsMessage">Platziere Einsätze und würfle.</div>
+
+      <div class="craps-bet-grid">
+        <div class="craps-bet-cell" data-craps-bet="pass"><div class="label">Pass Line</div><div class="sub">1:1</div><span class="chip-indicator"></span></div>
+        <div class="craps-bet-cell" data-craps-bet="dontpass"><div class="label">Don't Pass</div><div class="sub">1:1</div><span class="chip-indicator"></span></div>
+        <div class="craps-bet-cell" data-craps-bet="field"><div class="label">Field</div><div class="sub">1:1 (2→3:1, 12→4:1)</div><span class="chip-indicator"></span></div>
+        <div class="craps-bet-cell" data-craps-bet="place6"><div class="label">Place 6</div><div class="sub">7:6</div><span class="chip-indicator"></span></div>
+        <div class="craps-bet-cell" data-craps-bet="place8"><div class="label">Place 8</div><div class="sub">7:6</div><span class="chip-indicator"></span></div>
+      </div>
+
+      <div class="bet-display">Gesamteinsatz: <b id="crapsTotalBet">0</b> Chips</div>
+
+      <div class="chip-row" id="crapsChips">
+        <button class="chip-btn selected" data-val="10">10</button>
+        <button class="chip-btn" data-val="25">25</button>
+        <button class="chip-btn" data-val="50">50</button>
+        <button class="chip-btn" data-val="100">100</button>
+        <button class="chip-btn" data-val="500">500</button>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn secondary" id="crapsClearBtn">Einsätze löschen</button>
+        <button class="action-btn" id="crapsRollBtn">Würfeln</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KENO ================= -->
+  <section id="keno" hidden>
+    <div class="panel">
+      <div class="panel-header">
+        <h2>🔢 Keno</h2>
+        <button class="back-link" data-target="lobby">← Zurück zur Lobby</button>
+      </div>
+
+      <details class="rule-hint">
+        <summary>Kurzregeln</summary>
+        <p>Wähle 1 bis 10 Zahlen von 1–80. Anschließend werden 20 Zahlen gezogen. Je mehr deiner gewählten Zahlen dabei sind, desto höher die Auszahlung — abhängig davon, wie viele Zahlen du insgesamt gewählt hast.</p>
+      </details>
+
+      <div class="message-bar" id="kenoMessage">Wähle bis zu 10 Zahlen.</div>
+
+      <div class="keno-grid" id="kenoGrid"></div>
+
+      <div class="keno-controls">
+        <button class="action-btn secondary" id="kenoClearBtn">Auswahl löschen</button>
+        <button class="action-btn secondary" id="kenoQuickPickBtn">Zufallsauswahl</button>
+      </div>
+
+      <div class="bet-display">Einsatz: <b id="kenoBetDisplay">10</b> Chips &middot; Ausgewählt: <b id="kenoPickCount">0</b> / 10</div>
+
+      <div class="chip-row" id="kenoChips">
+        <button class="chip-btn selected" data-val="10">10</button>
+        <button class="chip-btn" data-val="25">25</button>
+        <button class="chip-btn" data-val="50">50</button>
+        <button class="chip-btn" data-val="100">100</button>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn" id="kenoDrawBtn">Ziehung starten</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SIC BO ================= -->
+  <section id="sicbo" hidden>
+    <div class="panel">
+      <div class="panel-header">
+        <h2>🎯 Sic Bo</h2>
+        <button class="back-link" data-target="lobby">← Zurück zur Lobby</button>
+      </div>
+
+      <details class="rule-hint">
+        <summary>Kurzregeln</summary>
+        <p>Drei Würfel werden geworfen. <b>Groß</b> (11–17) und <b>Klein</b> (4–10) zahlen 1:1, verlieren aber bei einem Dreierpasch. <b>Jedes Tripel</b> (irgendein Dreierpasch) zahlt 30:1. <b>Einzelzahl</b> zahlt je nach Anzahl Treffer 1:1 / 2:1 / 3:1.</p>
+      </details>
+
+      <div class="felt-table">
+        <div class="dice-row" id="sicboDiceRow"></div>
+      </div>
+
+      <div class="message-bar" id="sicboMessage">Platziere Einsätze und würfle.</div>
+
+      <div class="sicbo-bet-grid">
+        <div class="craps-bet-cell" data-sicbo-bet="big"><div class="label">Groß (11–17)</div><div class="sub">1:1</div><span class="chip-indicator"></span></div>
+        <div class="craps-bet-cell" data-sicbo-bet="small"><div class="label">Klein (4–10)</div><div class="sub">1:1</div><span class="chip-indicator"></span></div>
+        <div class="craps-bet-cell" data-sicbo-bet="anytriple"><div class="label">Jedes Tripel</div><div class="sub">30:1</div><span class="chip-indicator"></span></div>
+      </div>
+
+      <div class="sicbo-numbers-row" id="sicboNumbersRow"></div>
+
+      <div class="bet-display">Gesamteinsatz: <b id="sicboTotalBet">0</b> Chips</div>
+
+      <div class="chip-row" id="sicboChips">
+        <button class="chip-btn selected" data-val="10">10</button>
+        <button class="chip-btn" data-val="25">25</button>
+        <button class="chip-btn" data-val="50">50</button>
+        <button class="chip-btn" data-val="100">100</button>
+        <button class="chip-btn" data-val="500">500</button>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn secondary" id="sicboClearBtn">Einsätze löschen</button>
+        <button class="action-btn" id="sicboRollBtn">Würfeln</button>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <div class="modal-overlay" id="bankruptModal">
@@ -743,9 +1137,14 @@
   /* ======================================================
      KONSTANTEN & PERSISTENZ
   ====================================================== */
-  const KEYS = { balance:'ccs_balance_v1', stats:'ccs_stats_v2', mute:'ccs_mute_v1', pokerBots:'ccs_pokerbots_v1' };
+  const KEYS = { balance:'ccs_balance_v1', stats:'ccs_stats_v3', mute:'ccs_mute_v1', pokerBots:'ccs_pokerbots_v1' };
   const START_BALANCE = 1000;
   const MIN_CHIP = 10;
+  const STATS_DEFAULT = {
+    handsPlayed:0, spinsRoulette:0, spinsSlots:0, pokerHands:0,
+    baccaratHands:0, videoPokerHands:0, crapsRolls:0, kenoSpins:0, sicboRolls:0,
+    biggestWin:0, totalWagered:0, totalWon:0
+  };
 
   function loadBalance(){
     const v = localStorage.getItem(KEYS.balance);
@@ -758,12 +1157,14 @@
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(KEYS.stats));
-      if(s && typeof s === 'object') return Object.assign({handsPlayed:0, spinsRoulette:0, spinsSlots:0, pokerHands:0, biggestWin:0}, s);
+      if(s && typeof s === 'object') return Object.assign({}, STATS_DEFAULT, s);
     }catch(e){ /* ignore */ }
-    return {handsPlayed:0, spinsRoulette:0, spinsSlots:0, pokerHands:0, biggestWin:0};
+    return Object.assign({}, STATS_DEFAULT);
   }
   let stats = loadStats();
   function saveStats(){ localStorage.setItem(KEYS.stats, JSON.stringify(stats)); }
+  function recordWager(amount){ stats.totalWagered += amount; }
+  function recordReturn(amount){ stats.totalWon += amount; }
 
   function updateBalanceDisplay(){
     document.querySelectorAll('.balance-value').forEach(el => el.textContent = balance.toLocaleString('de-CH'));
@@ -774,12 +1175,35 @@
   function recordWin(amount){ if(amount > stats.biggestWin){ stats.biggestWin = amount; saveStats(); updateLobbyStats(); } }
 
   function updateLobbyStats(){
+    const net = stats.totalWon - stats.totalWagered;
+    document.getElementById('statNet').textContent = (net>=0?'+':'') + net.toLocaleString('de-CH');
+    document.getElementById('statBiggest').textContent = stats.biggestWin.toLocaleString('de-CH');
     document.getElementById('statHands').textContent = stats.handsPlayed;
     document.getElementById('statSpinsR').textContent = stats.spinsRoulette;
     document.getElementById('statSpinsS').textContent = stats.spinsSlots;
     document.getElementById('statPoker').textContent = stats.pokerHands;
-    document.getElementById('statBiggest').textContent = stats.biggestWin.toLocaleString('de-CH');
+    document.getElementById('statBaccarat').textContent = stats.baccaratHands;
+    document.getElementById('statVideoPoker').textContent = stats.videoPokerHands;
+    document.getElementById('statCraps').textContent = stats.crapsRolls;
+    document.getElementById('statKeno').textContent = stats.kenoSpins;
+    document.getElementById('statSicbo').textContent = stats.sicboRolls;
+    document.getElementById('statBiggest2').textContent = stats.biggestWin.toLocaleString('de-CH');
+    document.getElementById('statTotalWagered').textContent = stats.totalWagered.toLocaleString('de-CH') + ' Chips';
+    document.getElementById('statTotalWon').textContent = stats.totalWon.toLocaleString('de-CH') + ' Chips';
+    const netBig = document.getElementById('statNetBig');
+    netBig.textContent = (net>=0?'+':'') + net.toLocaleString('de-CH') + ' Chips';
+    netBig.className = 'net-value ' + (net>=0?'pos':'neg');
+    document.getElementById('statNetSub').textContent = net>=0
+      ? 'Insgesamt mehr gewonnen als gesetzt — nicht schlecht!'
+      : 'Insgesamt mehr gesetzt als gewonnen — wie im echten Casino üblich.';
   }
+
+  document.getElementById('statsResetBtn').addEventListener('click', function(){
+    stats = Object.assign({}, STATS_DEFAULT);
+    saveStats();
+    updateLobbyStats();
+    showToast('Statistik zurückgesetzt', 'Alle Zähler stehen wieder auf 0.', '');
+  });
 
   function checkBroke(){
     const modal = document.getElementById('bankruptModal');
@@ -1000,6 +1424,20 @@
     });
   }
 
+  /* Würfel-Anzeige (3x3-Pip-Raster), gemeinsam für Craps & Sic Bo. */
+  const DIE_PIP_PATTERNS = { 1:[4], 2:[0,8], 3:[0,4,8], 4:[0,2,6,8], 5:[0,2,4,6,8], 6:[0,2,3,5,6,8] };
+  function makeDie(value){
+    const die = document.createElement('div');
+    die.className = 'die';
+    const pips = DIE_PIP_PATTERNS[value] || [];
+    for(let i=0;i<9;i++){
+      const p = document.createElement('div');
+      p.className = 'pip' + (pips.indexOf(i)!==-1 ? ' on' : '');
+      die.appendChild(p);
+    }
+    return die;
+  }
+
   /* ======================================================
      BLACKJACK (Mehrfach-Hand-Modell mit Split)
   ====================================================== */
@@ -1173,7 +1611,7 @@
       }
       if(dBust || pTotal > dTotal){
         const win = hand.bet * 2;
-        addChips(win);
+        addChips(win); recordReturn(win);
         hand.result = { text:'Gewinn (+' + hand.bet + ')', cls:'win' };
         totalDelta += hand.bet; winCount++;
         return;
@@ -1183,7 +1621,7 @@
         totalDelta -= hand.bet; loseCount++;
         return;
       }
-      addChips(hand.bet);
+      addChips(hand.bet); recordReturn(hand.bet);
       hand.result = { text:'Push', cls:'push' };
       pushCount++;
     });
@@ -1195,7 +1633,7 @@
 
   bjDealBtn.addEventListener('click', function(){
     if(bjBet <= 0 || bjBet > balance) return;
-    removeChips(bjBet);
+    removeChips(bjBet); recordWager(bjBet);
     bjInRound = true; bjHoleHidden = true; bjActiveIdx = 0;
     bjHands = [{ cards:[bjDrawCard(), bjDrawCard()], bet:bjBet, status:'playing', isSplitAces:false, doubled:false, result:null }];
     bjDealer = [bjDrawCard(), bjDrawCard()];
@@ -1207,11 +1645,11 @@
     if(playerBJ || dealerBJ){
       bjHoleHidden = false;
       if(playerBJ && dealerBJ){
-        addChips(bjBet); bjHands[0].status='stood'; bjHands[0].result={text:'Push', cls:'push'};
+        addChips(bjBet); recordReturn(bjBet); bjHands[0].status='stood'; bjHands[0].result={text:'Push', cls:'push'};
         bjSetMessage('Beide haben Blackjack — Push.', 'push');
       } else if(playerBJ){
         const win = Math.round(bjBet*2.5);
-        addChips(win); recordWin(win-bjBet);
+        addChips(win); recordReturn(win); recordWin(win-bjBet);
         bjHands[0].status='stood'; bjHands[0].result={text:'Blackjack! (+' + (win-bjBet) + ')', cls:'win'};
         bjSetMessage('Blackjack! Du gewinnst ' + (win-bjBet) + ' Chips (3:2).', 'win'); sfxBigWin();
       } else {
@@ -1253,7 +1691,7 @@
     if(!bjInRound) return;
     const hand = bjHands[bjActiveIdx];
     if(!hand || hand.cards.length !== 2 || balance < hand.bet) return;
-    removeChips(hand.bet); hand.bet *= 2; hand.doubled = true;
+    removeChips(hand.bet); recordWager(hand.bet); hand.bet *= 2; hand.doubled = true;
     hand.cards.push(bjDrawCard()); sfxCard();
     hand.status = bjHandValue(hand.cards) > 21 ? 'bust' : 'stood';
     bjAfterHandAction();
@@ -1262,7 +1700,7 @@
     if(!bjInRound) return;
     const hand = bjHands[bjActiveIdx];
     if(!hand || !bjCanSplit(hand, balance, bjHands.length)) return;
-    removeChips(hand.bet);
+    removeChips(hand.bet); recordWager(hand.bet);
     bjPerformSplit(bjHands, bjActiveIdx);
     sfxChip();
     bjAfterHandAction();
@@ -1359,7 +1797,7 @@
       if(rlSpinning) return;
       const key = el.dataset.bet;
       if(rlSelectedChip > balance){ rlMessage.textContent = 'Nicht genug Chips für diesen Einsatz.'; rlMessage.className='message-bar lose'; return; }
-      removeChips(rlSelectedChip);
+      removeChips(rlSelectedChip); recordWager(rlSelectedChip);
       rlBets[key] = (rlBets[key] || 0) + rlSelectedChip;
       sfxChip();
       rlRefreshIndicators();
@@ -1371,7 +1809,7 @@
   document.getElementById('rlClearBtn').addEventListener('click', function(){
     if(rlSpinning) return;
     const refund = rlTotalWagered();
-    if(refund > 0) addChips(refund);
+    if(refund > 0){ addChips(refund); stats.totalWagered -= refund; }
     rlBets = {};
     rlRefreshIndicators();
     rlMessage.textContent = 'Einsätze gelöscht.';
@@ -1441,7 +1879,7 @@
       }
     }
     if(totalPayout > 0){
-      addChips(totalPayout);
+      addChips(totalPayout); recordReturn(totalPayout);
       const profit = totalPayout - totalWagered;
       recordWin(profit);
       if(profit >= totalWagered*3) { sfxBigWin(); showToast('Großer Gewinn!', 'Zahl ' + winningNumber + ' (' + numColorLabel(winningNumber) + ') — +' + profit + ' Chips', 'win'); }
@@ -1522,7 +1960,7 @@
     if(slBet > balance){ slMessage.textContent = 'Nicht genug Chips für diesen Einsatz.'; slMessage.className='message-bar lose'; return; }
     slSpinning = true;
     slSpinBtn.disabled = true;
-    removeChips(slBet);
+    removeChips(slBet); recordWager(slBet);
     slMessage.textContent = 'Die Walzen drehen...';
     slMessage.className = 'message-bar';
     sfxSpin();
@@ -1547,6 +1985,7 @@
     if(winMult > 0){
       const payout = slBet * winMult;
       addChips(payout);
+      recordReturn(payout);
       recordWin(payout - slBet);
       msg += 'Du gewinnst ' + (payout - slBet) + ' Chips (' + winMult + '×).';
       slMessage.textContent = msg;
@@ -1711,7 +2150,7 @@
     p.stack -= amount;
     p.betThisRound += amount;
     p.totalContributed += amount;
-    if(idx===0) removeChips(amount);
+    if(idx===0){ removeChips(amount); recordWager(amount); }
     if(p.stack===0) p.allIn = true;
     return amount;
   }
@@ -1871,7 +2310,7 @@
     const winner = pkActive()[0];
     const total = pkPotTotal();
     winner.stack += total;
-    if(winner.idx===0) addChips(total);
+    if(winner.idx===0){ addChips(total); recordReturn(total); }
     pkLastWinners = [winner.idx];
     pkLog(winner.name + ' gewinnt den Pot (' + total + ' Chips) — alle anderen sind ausgestiegen.');
     if(winner.idx===0){ recordWin(total - winner.totalContributed); showToast('Pot gewonnen', '+' + (total-winner.totalContributed) + ' Chips (alle anderen gefoldet)', 'win'); sfxWin(); }
@@ -1885,6 +2324,7 @@
     const pots = pkComputeSidePots(pkState.players.map(function(p){ return {idx:p.idx, totalContributed:p.totalContributed, folded:p.folded}; }));
     let winners = new Set();
     let humanDelta = 0 - pkState.players[0].totalContributed;
+    let humanGrossReturn = 0;
     pots.forEach(function(pot){
       if(pot.eligible.length===0) return;
       let potWinners = [pot.eligible[0]];
@@ -1898,12 +2338,13 @@
       potWinners.forEach(function(w){
         pkState.players[w].stack += share;
         winners.add(w);
-        if(w===0) humanDelta += share;
+        if(w===0){ humanDelta += share; humanGrossReturn += share; }
       });
       let ri=0;
-      while(remainder>0){ pkState.players[potWinners[ri%potWinners.length]].stack += 1; if(potWinners[ri%potWinners.length]===0) humanDelta+=1; remainder--; ri++; }
+      while(remainder>0){ pkState.players[potWinners[ri%potWinners.length]].stack += 1; if(potWinners[ri%potWinners.length]===0){ humanDelta+=1; humanGrossReturn+=1; } remainder--; ri++; }
     });
     if(humanDelta>0){ addChips(humanDelta); }
+    if(humanGrossReturn>0){ recordReturn(humanGrossReturn); }
     pkLastWinners = Array.from(winners);
     nonFolded.forEach(function(p){ pkLog(p.name + ' zeigt ' + p.holeCards.map(function(c){return c.label+c.suit;}).join(' ') + ' — ' + results[p.idx].name); });
     const winnerNames = Array.from(winners).map(function(i){ return pkState.players[i].name; }).join(', ');
@@ -2096,6 +2537,757 @@
   }
 
   pkRenderAll();
+
+  /* ======================================================
+     CRAPS
+  ====================================================== */
+  let crapsPhase = 'comeout';
+  let crapsPoint = null;
+  let crapsBets = { pass:0, dontpass:0, field:0, place6:0, place8:0 };
+  let crapsSelectedChip = 10;
+  let crapsRolling = false;
+
+  function crapsTotalWagered(){ let t=0; for(const k in crapsBets) t+=crapsBets[k]; return t; }
+  function crapsRefreshUI(){
+    document.querySelectorAll('#craps [data-craps-bet]').forEach(function(el){
+      const key = el.dataset.crapsBet;
+      const ind = el.querySelector('.chip-indicator');
+      if(crapsBets[key]){ ind.textContent = crapsBets[key]; ind.classList.add('show'); }
+      else { ind.textContent=''; ind.classList.remove('show'); }
+    });
+    document.getElementById('crapsTotalBet').textContent = crapsTotalWagered();
+    document.getElementById('crapsPointBadge').textContent = crapsPhase==='comeout' ? 'Come-Out' : ('Point: ' + crapsPoint);
+  }
+
+  document.querySelectorAll('#crapsChips .chip-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(crapsRolling) return;
+      document.querySelectorAll('#crapsChips .chip-btn').forEach(function(b){ b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      crapsSelectedChip = parseInt(btn.dataset.val,10);
+    });
+  });
+
+  document.querySelectorAll('#craps [data-craps-bet]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if(crapsRolling) return;
+      const key = el.dataset.crapsBet;
+      if((key==='pass' || key==='dontpass') && crapsPhase!=='comeout'){
+        document.getElementById('crapsMessage').textContent = 'Pass Line / Don\'t Pass kann nur beim Come-Out-Wurf gesetzt werden.';
+        document.getElementById('crapsMessage').className = 'message-bar lose';
+        return;
+      }
+      if(crapsSelectedChip > balance){
+        document.getElementById('crapsMessage').textContent = 'Nicht genug Chips für diesen Einsatz.';
+        document.getElementById('crapsMessage').className = 'message-bar lose';
+        return;
+      }
+      removeChips(crapsSelectedChip); recordWager(crapsSelectedChip);
+      crapsBets[key] = (crapsBets[key]||0) + crapsSelectedChip;
+      sfxChip();
+      crapsRefreshUI();
+      document.getElementById('crapsMessage').textContent = 'Einsatz platziert.';
+      document.getElementById('crapsMessage').className = 'message-bar';
+    });
+  });
+
+  document.getElementById('crapsClearBtn').addEventListener('click', function(){
+    if(crapsRolling) return;
+    const refund = crapsTotalWagered();
+    if(refund>0){ addChips(refund); stats.totalWagered -= refund; }
+    crapsBets = { pass:0, dontpass:0, field:0, place6:0, place8:0 };
+    crapsRefreshUI();
+    document.getElementById('crapsMessage').textContent = 'Einsätze gelöscht.';
+    document.getElementById('crapsMessage').className = 'message-bar';
+  });
+
+  function crapsResolveRoll(d1, d2){
+    const sum = d1+d2;
+    const result = { sum:sum, fieldOutcome:null, passOutcome:null, dontPassOutcome:null, place6Outcome:null, place8Outcome:null };
+    if(crapsBets.field > 0){
+      if(sum===2) result.fieldOutcome = {win:true, mult:3};
+      else if(sum===12) result.fieldOutcome = {win:true, mult:4};
+      else if([3,4,9,10,11].indexOf(sum)!==-1) result.fieldOutcome = {win:true, mult:2};
+      else result.fieldOutcome = {win:false};
+    }
+    if(crapsPhase === 'comeout'){
+      if(sum===7 || sum===11){
+        if(crapsBets.pass>0) result.passOutcome = {win:true, mult:2};
+        if(crapsBets.dontpass>0) result.dontPassOutcome = {win:false};
+      } else if(sum===2 || sum===3){
+        if(crapsBets.pass>0) result.passOutcome = {win:false};
+        if(crapsBets.dontpass>0) result.dontPassOutcome = {win:true, mult:2};
+      } else if(sum===12){
+        if(crapsBets.pass>0) result.passOutcome = {win:false};
+        if(crapsBets.dontpass>0) result.dontPassOutcome = {push:true};
+      } else {
+        crapsPhase = 'point'; crapsPoint = sum;
+      }
+    } else {
+      if(sum===crapsPoint){
+        if(crapsBets.pass>0) result.passOutcome = {win:true, mult:2};
+        if(crapsBets.dontpass>0) result.dontPassOutcome = {win:false};
+        crapsPhase = 'comeout'; crapsPoint = null;
+      } else if(sum===7){
+        if(crapsBets.pass>0) result.passOutcome = {win:false};
+        if(crapsBets.dontpass>0) result.dontPassOutcome = {win:true, mult:2};
+        if(crapsBets.place6>0) result.place6Outcome = {win:false, cleared:true};
+        if(crapsBets.place8>0) result.place8Outcome = {win:false, cleared:true};
+        crapsPhase = 'comeout'; crapsPoint = null;
+        crapsBets.place6 = 0; crapsBets.place8 = 0;
+      } else {
+        if(sum===6 && crapsBets.place6>0) result.place6Outcome = {win:true, mult:7/6};
+        if(sum===8 && crapsBets.place8>0) result.place8Outcome = {win:true, mult:7/6};
+      }
+    }
+    return result;
+  }
+
+  document.getElementById('crapsRollBtn').addEventListener('click', function(){
+    if(crapsRolling) return;
+    if(crapsTotalWagered()===0){
+      document.getElementById('crapsMessage').textContent = 'Bitte zuerst einen Einsatz platzieren.';
+      document.getElementById('crapsMessage').className = 'message-bar lose';
+      return;
+    }
+    crapsRolling = true;
+    document.getElementById('crapsRollBtn').disabled = true;
+    document.getElementById('crapsClearBtn').disabled = true;
+    const row = document.getElementById('crapsDiceRow');
+    row.innerHTML = '';
+    const d1el = makeDie(1), d2el = makeDie(1);
+    d1el.classList.add('rolling'); d2el.classList.add('rolling');
+    row.appendChild(d1el); row.appendChild(d2el);
+    sfxSpin();
+    setTimeout(function(){
+      const d1 = 1+Math.floor(Math.random()*6);
+      const d2 = 1+Math.floor(Math.random()*6);
+      crapsFinishRoll(d1,d2);
+    }, 900);
+  });
+
+  function crapsFinishRoll(d1, d2){
+    const row = document.getElementById('crapsDiceRow');
+    row.innerHTML = '';
+    row.appendChild(makeDie(d1));
+    row.appendChild(makeDie(d2));
+
+    const snapshot = Object.assign({}, crapsBets);
+    const result = crapsResolveRoll(d1, d2);
+    let totalReturn = 0, totalProfit = 0;
+    const messages = [];
+
+    if(result.fieldOutcome){
+      if(result.fieldOutcome.win){ const profit = snapshot.field * result.fieldOutcome.mult; totalReturn += snapshot.field + profit; totalProfit += profit; messages.push('Field gewinnt (' + result.fieldOutcome.mult + ':1)'); }
+      else messages.push('Field verliert');
+      crapsBets.field = 0;
+    }
+    if(result.passOutcome){
+      if(result.passOutcome.win){ const profit = snapshot.pass; totalReturn += snapshot.pass + profit; totalProfit += profit; messages.push('Pass Line gewinnt'); }
+      else messages.push('Pass Line verliert');
+      crapsBets.pass = 0;
+    }
+    if(result.dontPassOutcome){
+      if(result.dontPassOutcome.push){ totalReturn += snapshot.dontpass; messages.push('Don\'t Pass Push (12)'); }
+      else if(result.dontPassOutcome.win){ const profit = snapshot.dontpass; totalReturn += snapshot.dontpass + profit; totalProfit += profit; messages.push('Don\'t Pass gewinnt'); }
+      else messages.push('Don\'t Pass verliert');
+      crapsBets.dontpass = 0;
+    }
+    if(result.place6Outcome){
+      if(result.place6Outcome.win){ const profit = Math.floor(snapshot.place6 * 7/6); totalReturn += snapshot.place6 + profit; totalProfit += profit; messages.push('Place 6 gewinnt'); }
+      else { totalProfit -= snapshot.place6; messages.push('Place 6 verloren (Seven-Out)'); }
+    }
+    if(result.place8Outcome){
+      if(result.place8Outcome.win){ const profit = Math.floor(snapshot.place8 * 7/6); totalReturn += snapshot.place8 + profit; totalProfit += profit; messages.push('Place 8 gewinnt'); }
+      else { totalProfit -= snapshot.place8; messages.push('Place 8 verloren (Seven-Out)'); }
+    }
+
+    if(totalReturn > 0){ addChips(totalReturn); recordReturn(totalReturn); }
+    if(totalProfit > 0) recordWin(totalProfit);
+    if(totalReturn > 0) sfxWin(); else if(messages.length) sfxLose();
+
+    const msgBar = document.getElementById('crapsMessage');
+    msgBar.textContent = 'Wurf: ' + d1 + ' + ' + d2 + ' = ' + result.sum + '. ' + (messages.length ? messages.join(' · ') : 'Point-Wurf — weiter geht\'s.');
+    msgBar.className = 'message-bar' + (totalReturn>0 ? ' win' : (messages.length ? ' lose' : ''));
+
+    stats.crapsRolls++; saveStats(); updateLobbyStats();
+    crapsRefreshUI();
+    crapsRolling = false;
+    document.getElementById('crapsRollBtn').disabled = false;
+    document.getElementById('crapsClearBtn').disabled = false;
+  }
+
+  crapsRefreshUI();
+
+  /* ======================================================
+     BACCARAT
+  ====================================================== */
+  let baccShoe = [];
+  function baccBuildShoe(){
+    baccShoe = [];
+    for(let d=0; d<6; d++){
+      for(const suit of SUITS){
+        for(const rank of BJ_RANKS){
+          baccShoe.push({rank:rank, label:rank, suit:suit.s, color:suit.c});
+        }
+      }
+    }
+    shuffle(baccShoe);
+  }
+  function baccDraw(){
+    if(baccShoe.length < 10) baccBuildShoe();
+    return baccShoe.pop();
+  }
+  function baccCardPoint(rank){
+    if(rank==='A') return 1;
+    if(['10','J','Q','K'].indexOf(rank)!==-1) return 0;
+    return parseInt(rank,10);
+  }
+  function baccHandTotal(cards){
+    return cards.reduce(function(s,c){ return s + baccCardPoint(c.rank); }, 0) % 10;
+  }
+  function baccBankerShouldDraw(bankerTotal, playerThirdPoint){
+    if(playerThirdPoint === null) return bankerTotal <= 5;
+    const p = playerThirdPoint;
+    if(bankerTotal <= 2) return true;
+    if(bankerTotal === 3) return p !== 8;
+    if(bankerTotal === 4) return p>=2 && p<=7;
+    if(bankerTotal === 5) return p>=4 && p<=7;
+    if(bankerTotal === 6) return p===6 || p===7;
+    return false;
+  }
+
+  let baccBets = { player:0, tie:0, banker:0 };
+  let baccSelectedChip = 10;
+  let baccDealing = false;
+
+  function baccTotalWagered(){ return baccBets.player + baccBets.tie + baccBets.banker; }
+  function baccRefreshUI(){
+    document.querySelectorAll('#baccarat [data-bacc-bet]').forEach(function(el){
+      const key = el.dataset.baccBet;
+      const ind = el.querySelector('.chip-indicator');
+      if(baccBets[key]){ ind.textContent = baccBets[key]; ind.classList.add('show'); }
+      else { ind.textContent=''; ind.classList.remove('show'); }
+    });
+    document.getElementById('baccBetDisplay').textContent = baccTotalWagered();
+  }
+
+  document.querySelectorAll('#baccChips .chip-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(baccDealing) return;
+      document.querySelectorAll('#baccChips .chip-btn').forEach(function(b){ b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      baccSelectedChip = parseInt(btn.dataset.val,10);
+    });
+  });
+
+  document.querySelectorAll('#baccarat [data-bacc-bet]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if(baccDealing) return;
+      const key = el.dataset.baccBet;
+      if(baccSelectedChip > balance){
+        document.getElementById('baccMessage').textContent = 'Nicht genug Chips für diesen Einsatz.';
+        document.getElementById('baccMessage').className = 'message-bar lose';
+        return;
+      }
+      removeChips(baccSelectedChip); recordWager(baccSelectedChip);
+      baccBets[key] = (baccBets[key]||0) + baccSelectedChip;
+      sfxChip();
+      baccRefreshUI();
+    });
+  });
+
+  document.getElementById('baccClearBtn').addEventListener('click', function(){
+    if(baccDealing) return;
+    const refund = baccTotalWagered();
+    if(refund>0){ addChips(refund); stats.totalWagered -= refund; }
+    baccBets = { player:0, tie:0, banker:0 };
+    baccRefreshUI();
+    document.getElementById('baccMessage').textContent = 'Einsatz gelöscht.';
+    document.getElementById('baccMessage').className = 'message-bar';
+  });
+
+  document.getElementById('baccDealBtn').addEventListener('click', function(){
+    if(baccDealing) return;
+    if(baccTotalWagered()===0){
+      document.getElementById('baccMessage').textContent = 'Bitte zuerst einen Einsatz platzieren.';
+      document.getElementById('baccMessage').className = 'message-bar lose';
+      return;
+    }
+    baccDealing = true;
+    document.getElementById('baccDealBtn').disabled = true;
+    document.getElementById('baccClearBtn').disabled = true;
+    document.querySelectorAll('#baccarat [data-bacc-bet]').forEach(function(el){ el.style.pointerEvents = 'none'; });
+
+    const playerCards = [baccDraw(), baccDraw()];
+    const bankerCards = [baccDraw(), baccDraw()];
+    renderCardRow(document.getElementById('baccPlayerCards'), playerCards);
+    renderCardRow(document.getElementById('baccBankerCards'), bankerCards);
+    document.getElementById('baccPlayerTotal').textContent = '(' + baccHandTotal(playerCards) + ')';
+    document.getElementById('baccBankerTotal').textContent = '(' + baccHandTotal(bankerCards) + ')';
+    sfxCard();
+
+    setTimeout(function(){
+      const playerTotal = baccHandTotal(playerCards);
+      const bankerTotal = baccHandTotal(bankerCards);
+      let playerThird = null;
+      if(playerTotal<8 && bankerTotal<8){
+        if(playerTotal<=5){ playerThird = baccDraw(); playerCards.push(playerThird); }
+        const playerThirdPoint = playerThird ? baccCardPoint(playerThird.rank) : null;
+        if(baccBankerShouldDraw(bankerTotal, playerThirdPoint)){ bankerCards.push(baccDraw()); }
+      }
+      renderCardRow(document.getElementById('baccPlayerCards'), playerCards);
+      renderCardRow(document.getElementById('baccBankerCards'), bankerCards);
+      const pt = baccHandTotal(playerCards), bt = baccHandTotal(bankerCards);
+      document.getElementById('baccPlayerTotal').textContent = '(' + pt + ')';
+      document.getElementById('baccBankerTotal').textContent = '(' + bt + ')';
+      sfxCard();
+      setTimeout(function(){ baccFinish(pt, bt); }, 500);
+    }, 700);
+  });
+
+  function baccFinish(pt, bt){
+    const winner = pt===bt ? 'tie' : (pt>bt ? 'player' : 'banker');
+    let totalReturn = 0, totalProfit = 0;
+    const msgs = [];
+    if(baccBets.player>0){
+      if(winner==='player'){ const profit = baccBets.player; totalReturn += baccBets.player*2; totalProfit += profit; msgs.push('Spieler gewinnt'); }
+      else if(winner==='tie'){ totalReturn += baccBets.player; msgs.push('Spieler-Einsatz zurück (Tie)'); }
+    }
+    if(baccBets.banker>0){
+      if(winner==='banker'){ const profit = Math.floor(baccBets.banker*0.95); totalReturn += baccBets.banker+profit; totalProfit += profit; msgs.push('Bank gewinnt (5% Kommission)'); }
+      else if(winner==='tie'){ totalReturn += baccBets.banker; msgs.push('Bank-Einsatz zurück (Tie)'); }
+    }
+    if(baccBets.tie>0){
+      if(winner==='tie'){ const profit = baccBets.tie*8; totalReturn += baccBets.tie + profit; totalProfit += profit; msgs.push('Tie gewinnt (8:1)!'); }
+    }
+    if(totalReturn>0){ addChips(totalReturn); recordReturn(totalReturn); }
+    if(totalProfit>0) recordWin(totalProfit);
+    if(totalReturn>0) sfxWin(); else sfxLose();
+
+    const winnerLabel = winner==='player' ? 'Spieler' : (winner==='banker' ? 'Bank' : 'Unentschieden');
+    document.getElementById('baccMessage').textContent = winnerLabel + ' gewinnt (' + pt + ' : ' + bt + ')' + (msgs.length ? ' — ' + msgs.join(', ') : '.');
+    document.getElementById('baccMessage').className = 'message-bar' + (totalReturn>0 ? ' win' : ' lose');
+
+    baccBets = { player:0, tie:0, banker:0 };
+    baccRefreshUI();
+    stats.baccaratHands++; saveStats(); updateLobbyStats();
+    baccDealing = false;
+    document.getElementById('baccDealBtn').disabled = false;
+    document.getElementById('baccClearBtn').disabled = false;
+    document.querySelectorAll('#baccarat [data-bacc-bet]').forEach(function(el){ el.style.pointerEvents = ''; });
+  }
+
+  baccRefreshUI();
+
+  /* ======================================================
+     VIDEO POKER — Jacks or Better
+  ====================================================== */
+  let vpBet = 10;
+  let vpCards = [];
+  let vpHeld = new Set();
+  let vpDeck = [];
+  let vpStage = 'bet';
+  let vpBusy = false;
+
+  const VP_PAYTABLE_ROWS = [
+    ['Royal Flush', 800], ['Straight Flush', 50], ['Vierling', 25], ['Full House', 9],
+    ['Flush', 6], ['Straight', 4], ['Drilling', 3], ['Zwei Paare', 2], ['Ein Paar (Buben oder besser)', 1]
+  ];
+  function vpRenderPaytable(){
+    const tbl = document.getElementById('vpPaytableBody');
+    tbl.innerHTML = '';
+    VP_PAYTABLE_ROWS.forEach(function(row){
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + row[0] + '</td><td class="mult">' + row[1] + '×</td>';
+      tbl.appendChild(tr);
+    });
+  }
+  vpRenderPaytable();
+
+  function vpPayoutMultiplier(evalResult){
+    if(evalResult.name==='Royal Flush') return 800;
+    if(evalResult.name==='Straight Flush') return 50;
+    if(evalResult.category===7) return 25;
+    if(evalResult.category===6) return 9;
+    if(evalResult.category===5) return 6;
+    if(evalResult.category===4) return 4;
+    if(evalResult.category===3) return 3;
+    if(evalResult.category===2) return 2;
+    if(evalResult.category===1 && evalResult.tiebreak[0]>=11) return 1;
+    return 0;
+  }
+
+  function vpRenderHand(){
+    const container = document.getElementById('vpHand');
+    container.innerHTML = '';
+    vpCards.forEach(function(card, i){
+      const slot = document.createElement('div');
+      slot.className = 'vp-slot';
+      slot.appendChild(cardEl(card, false, false));
+      const holdBtn = document.createElement('button');
+      holdBtn.className = 'vp-hold-btn' + (vpHeld.has(i) ? ' held' : '');
+      holdBtn.textContent = vpHeld.has(i) ? 'GEHALTEN' : 'Halten';
+      holdBtn.disabled = vpStage !== 'draw';
+      holdBtn.addEventListener('click', function(){
+        if(vpStage !== 'draw' || vpBusy) return;
+        if(vpHeld.has(i)) vpHeld.delete(i); else vpHeld.add(i);
+        vpRenderHand();
+      });
+      slot.appendChild(holdBtn);
+      container.appendChild(slot);
+    });
+  }
+
+  document.querySelectorAll('#vpChips .chip-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(vpStage !== 'bet' || vpBusy) return;
+      document.querySelectorAll('#vpChips .chip-btn').forEach(function(b){ b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      vpBet = parseInt(btn.dataset.val,10);
+      document.getElementById('vpBetDisplay').textContent = vpBet;
+    });
+  });
+
+  document.getElementById('vpDealBtn').addEventListener('click', function(){
+    if(vpBusy) return;
+    if(vpStage === 'bet'){
+      if(vpBet > balance){
+        document.getElementById('vpMessage').textContent = 'Nicht genug Chips für diesen Einsatz.';
+        document.getElementById('vpMessage').className = 'message-bar lose';
+        return;
+      }
+      removeChips(vpBet); recordWager(vpBet);
+      vpDeck = pkMakeDeck(); shuffle(vpDeck);
+      vpCards = [vpDeck.pop(), vpDeck.pop(), vpDeck.pop(), vpDeck.pop(), vpDeck.pop()];
+      vpHeld = new Set();
+      vpStage = 'draw';
+      sfxCard();
+      vpRenderHand();
+      document.getElementById('vpDealBtn').textContent = 'Tauschen';
+      document.getElementById('vpMessage').textContent = 'Wähle Karten zum Halten und drücke „Tauschen“.';
+      document.getElementById('vpMessage').className = 'message-bar';
+      document.querySelectorAll('#vpChips .chip-btn').forEach(function(b){ b.disabled = true; });
+    } else {
+      vpBusy = true;
+      document.getElementById('vpDealBtn').disabled = true;
+      for(let i=0;i<5;i++){ if(!vpHeld.has(i)) vpCards[i] = vpDeck.pop(); }
+      sfxCard();
+      vpRenderHand();
+      setTimeout(function(){ vpFinish(); }, 400);
+    }
+  });
+
+  function vpFinish(){
+    const result = pkEvaluate5(vpCards);
+    const mult = vpPayoutMultiplier(result);
+    const payout = vpBet * mult;
+    if(payout > 0){
+      addChips(payout); recordReturn(payout);
+      recordWin(payout - vpBet);
+      document.getElementById('vpMessage').textContent = result.name + '! Du gewinnst ' + payout + ' Chips (' + mult + '×).';
+      document.getElementById('vpMessage').className = 'message-bar win';
+      if(mult >= 25){ sfxBigWin(); showToast('Großer Gewinn!', result.name + ' — +' + payout + ' Chips', 'win'); }
+      else sfxWin();
+    } else {
+      document.getElementById('vpMessage').textContent = result.name + ' — kein Treffer (mind. Paar Buben nötig). Versuch\'s nochmal!';
+      document.getElementById('vpMessage').className = 'message-bar lose';
+      sfxLose();
+    }
+    stats.videoPokerHands++; saveStats(); updateLobbyStats();
+    vpStage = 'bet';
+    vpBusy = false;
+    document.getElementById('vpDealBtn').disabled = false;
+    document.getElementById('vpDealBtn').textContent = 'Geben';
+    document.querySelectorAll('#vpChips .chip-btn').forEach(function(b){ b.disabled = false; });
+    vpRenderHand();
+  }
+
+  vpRenderHand();
+
+  /* ======================================================
+     KENO
+  ====================================================== */
+  let kenoPicked = new Set();
+  let kenoBet = 10;
+  let kenoDrawing = false;
+
+  const kenoGridEl = document.getElementById('kenoGrid');
+  (function(){
+    for(let n=1;n<=80;n++){
+      const cell = document.createElement('div');
+      cell.className = 'keno-cell';
+      cell.textContent = n;
+      cell.dataset.num = n;
+      cell.addEventListener('click', function(){
+        if(kenoDrawing) return;
+        if(kenoPicked.has(n)){
+          kenoPicked.delete(n);
+          cell.classList.remove('picked');
+        } else {
+          if(kenoPicked.size >= 10){
+            document.getElementById('kenoMessage').textContent = 'Maximal 10 Zahlen wählbar.';
+            document.getElementById('kenoMessage').className = 'message-bar lose';
+            return;
+          }
+          kenoPicked.add(n);
+          cell.classList.add('picked');
+        }
+        document.getElementById('kenoPickCount').textContent = kenoPicked.size;
+      });
+      kenoGridEl.appendChild(cell);
+    }
+  })();
+
+  document.querySelectorAll('#kenoChips .chip-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(kenoDrawing) return;
+      document.querySelectorAll('#kenoChips .chip-btn').forEach(function(b){ b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      kenoBet = parseInt(btn.dataset.val,10);
+      document.getElementById('kenoBetDisplay').textContent = kenoBet;
+    });
+  });
+
+  document.getElementById('kenoClearBtn').addEventListener('click', function(){
+    if(kenoDrawing) return;
+    kenoPicked = new Set();
+    document.querySelectorAll('#kenoGrid .keno-cell').forEach(function(c){ c.classList.remove('picked','drawn'); });
+    document.getElementById('kenoPickCount').textContent = '0';
+    document.getElementById('kenoMessage').textContent = 'Wähle bis zu 10 Zahlen.';
+    document.getElementById('kenoMessage').className = 'message-bar';
+  });
+
+  document.getElementById('kenoQuickPickBtn').addEventListener('click', function(){
+    if(kenoDrawing) return;
+    kenoPicked = new Set();
+    document.querySelectorAll('#kenoGrid .keno-cell').forEach(function(c){ c.classList.remove('picked','drawn'); });
+    const pool = []; for(let n=1;n<=80;n++) pool.push(n);
+    shuffle(pool);
+    const count = 6 + Math.floor(Math.random()*5);
+    for(let i=0;i<count;i++){ kenoPicked.add(pool[i]); }
+    document.querySelectorAll('#kenoGrid .keno-cell').forEach(function(c){
+      if(kenoPicked.has(parseInt(c.dataset.num,10))) c.classList.add('picked');
+    });
+    document.getElementById('kenoPickCount').textContent = kenoPicked.size;
+  });
+
+  const KENO_PAYTABLE = {
+    1: {1:3},
+    2: {2:12},
+    3: {2:1, 3:40},
+    4: {2:1, 3:4, 4:100},
+    5: {3:1, 4:20, 5:300},
+    6: {3:1, 4:4, 5:75, 6:500},
+    7: {4:2, 5:20, 6:150, 7:700},
+    8: {4:2, 5:12, 6:80, 7:300, 8:1000},
+    9: {4:1, 5:5, 6:30, 7:150, 8:500, 9:2000},
+    10:{5:2, 6:20, 7:80, 8:400, 9:2500, 10:10000}
+  };
+  function kenoPayoutMultiplier(picksCount, hits){
+    const table = KENO_PAYTABLE[picksCount];
+    if(!table) return 0;
+    return table[hits] || 0;
+  }
+
+  document.getElementById('kenoDrawBtn').addEventListener('click', function(){
+    if(kenoDrawing) return;
+    if(kenoPicked.size === 0){
+      document.getElementById('kenoMessage').textContent = 'Bitte zuerst mindestens eine Zahl wählen.';
+      document.getElementById('kenoMessage').className = 'message-bar lose';
+      return;
+    }
+    if(kenoBet > balance){
+      document.getElementById('kenoMessage').textContent = 'Nicht genug Chips für diesen Einsatz.';
+      document.getElementById('kenoMessage').className = 'message-bar lose';
+      return;
+    }
+    kenoDrawing = true;
+    removeChips(kenoBet); recordWager(kenoBet);
+    document.getElementById('kenoDrawBtn').disabled = true;
+    document.getElementById('kenoClearBtn').disabled = true;
+    document.getElementById('kenoQuickPickBtn').disabled = true;
+    document.querySelectorAll('#kenoGrid .keno-cell').forEach(function(c){ c.classList.remove('drawn'); });
+    sfxSpin();
+
+    setTimeout(function(){
+      const pool = []; for(let n=1;n<=80;n++) pool.push(n);
+      shuffle(pool);
+      const drawn = new Set(pool.slice(0,20));
+      let hits = 0;
+      document.querySelectorAll('#kenoGrid .keno-cell').forEach(function(c){
+        const num = parseInt(c.dataset.num,10);
+        if(drawn.has(num)){
+          c.classList.add('drawn');
+          if(kenoPicked.has(num)) hits++;
+        }
+      });
+      const mult = kenoPayoutMultiplier(kenoPicked.size, hits);
+      const payout = kenoBet * mult;
+      if(payout > 0){
+        addChips(payout); recordReturn(payout);
+        recordWin(payout - kenoBet);
+        document.getElementById('kenoMessage').textContent = hits + ' Treffer von ' + kenoPicked.size + ' — Du gewinnst ' + payout + ' Chips (' + mult + '×)!';
+        document.getElementById('kenoMessage').className = 'message-bar win';
+        if(mult >= 100){ sfxBigWin(); showToast('Keno-Jackpot!', '+' + payout + ' Chips', 'win'); }
+        else sfxWin();
+      } else {
+        document.getElementById('kenoMessage').textContent = hits + ' Treffer von ' + kenoPicked.size + ' — kein Gewinn. Versuch\'s nochmal!';
+        document.getElementById('kenoMessage').className = 'message-bar lose';
+        sfxLose();
+      }
+      stats.kenoSpins++; saveStats(); updateLobbyStats();
+      kenoDrawing = false;
+      document.getElementById('kenoDrawBtn').disabled = false;
+      document.getElementById('kenoClearBtn').disabled = false;
+      document.getElementById('kenoQuickPickBtn').disabled = false;
+    }, 1200);
+  });
+
+  /* ======================================================
+     SIC BO
+  ====================================================== */
+  let sicboBets = { big:0, small:0, anytriple:0 };
+  for(let n=1;n<=6;n++) sicboBets['num'+n] = 0;
+  let sicboSelectedChip = 10;
+  let sicboRolling = false;
+
+  const sicboNumbersRowEl = document.getElementById('sicboNumbersRow');
+  for(let n=1;n<=6;n++){
+    const cell = document.createElement('div');
+    cell.className = 'sicbo-num-cell';
+    cell.dataset.sicboBet = 'num'+n;
+    cell.innerHTML = '<div class="label">Zahl ' + n + '</div><div class="sub">1:1 / 2:1 / 3:1</div><span class="chip-indicator"></span>';
+    sicboNumbersRowEl.appendChild(cell);
+  }
+
+  function sicboTotalWagered(){ let t=0; for(const k in sicboBets) t+=sicboBets[k]; return t; }
+  function sicboRefreshUI(){
+    document.querySelectorAll('#sicbo [data-sicbo-bet]').forEach(function(el){
+      const key = el.dataset.sicboBet;
+      const ind = el.querySelector('.chip-indicator');
+      if(sicboBets[key]){ ind.textContent = sicboBets[key]; ind.classList.add('show'); }
+      else { ind.textContent=''; ind.classList.remove('show'); }
+    });
+    document.getElementById('sicboTotalBet').textContent = sicboTotalWagered();
+  }
+
+  document.querySelectorAll('#sicboChips .chip-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(sicboRolling) return;
+      document.querySelectorAll('#sicboChips .chip-btn').forEach(function(b){ b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      sicboSelectedChip = parseInt(btn.dataset.val,10);
+    });
+  });
+
+  document.querySelectorAll('#sicbo [data-sicbo-bet]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if(sicboRolling) return;
+      const key = el.dataset.sicboBet;
+      if(sicboSelectedChip > balance){
+        document.getElementById('sicboMessage').textContent = 'Nicht genug Chips für diesen Einsatz.';
+        document.getElementById('sicboMessage').className = 'message-bar lose';
+        return;
+      }
+      removeChips(sicboSelectedChip); recordWager(sicboSelectedChip);
+      sicboBets[key] = (sicboBets[key]||0) + sicboSelectedChip;
+      sfxChip();
+      sicboRefreshUI();
+    });
+  });
+
+  document.getElementById('sicboClearBtn').addEventListener('click', function(){
+    if(sicboRolling) return;
+    const refund = sicboTotalWagered();
+    if(refund>0){ addChips(refund); stats.totalWagered -= refund; }
+    sicboBets = { big:0, small:0, anytriple:0 };
+    for(let n=1;n<=6;n++) sicboBets['num'+n] = 0;
+    sicboRefreshUI();
+    document.getElementById('sicboMessage').textContent = 'Einsätze gelöscht.';
+    document.getElementById('sicboMessage').className = 'message-bar';
+  });
+
+  document.getElementById('sicboRollBtn').addEventListener('click', function(){
+    if(sicboRolling) return;
+    if(sicboTotalWagered() === 0){
+      document.getElementById('sicboMessage').textContent = 'Bitte zuerst mindestens einen Einsatz platzieren.';
+      document.getElementById('sicboMessage').className = 'message-bar lose';
+      return;
+    }
+    sicboRolling = true;
+    document.getElementById('sicboRollBtn').disabled = true;
+    document.getElementById('sicboClearBtn').disabled = true;
+    const row = document.getElementById('sicboDiceRow');
+    row.innerHTML = '';
+    [1,1,1].forEach(function(){ const d = makeDie(1); d.classList.add('rolling'); row.appendChild(d); });
+    sfxSpin();
+    setTimeout(function(){
+      const d1 = 1+Math.floor(Math.random()*6);
+      const d2 = 1+Math.floor(Math.random()*6);
+      const d3 = 1+Math.floor(Math.random()*6);
+      sicboFinish(d1,d2,d3);
+    }, 900);
+  });
+
+  function sicboFinish(d1,d2,d3){
+    const row = document.getElementById('sicboDiceRow');
+    row.innerHTML = '';
+    row.appendChild(makeDie(d1)); row.appendChild(makeDie(d2)); row.appendChild(makeDie(d3));
+
+    const dice = [d1,d2,d3].sort(function(a,b){ return a-b; });
+    const sum = d1+d2+d3;
+    const isTriple = d1===d2 && d2===d3;
+    const big = !isTriple && sum>=11 && sum<=17;
+    const small = !isTriple && sum>=4 && sum<=10;
+
+    let totalReturn = 0, totalProfit = 0;
+    const msgs = [];
+
+    if(sicboBets.big>0){
+      if(big){ const profit = sicboBets.big; totalReturn += sicboBets.big*2; totalProfit += profit; msgs.push('Groß gewinnt'); }
+      else msgs.push('Groß verliert');
+    }
+    if(sicboBets.small>0){
+      if(small){ const profit = sicboBets.small; totalReturn += sicboBets.small*2; totalProfit += profit; msgs.push('Klein gewinnt'); }
+      else msgs.push('Klein verliert');
+    }
+    if(sicboBets.anytriple>0){
+      if(isTriple){ const profit = sicboBets.anytriple*30; totalReturn += sicboBets.anytriple + profit; totalProfit += profit; msgs.push('Tripel-Treffer (30:1)!'); }
+      else msgs.push('Kein Tripel');
+    }
+    for(let n=1;n<=6;n++){
+      const key = 'num'+n;
+      if(sicboBets[key] > 0){
+        const matches = dice.filter(function(d){ return d===n; }).length;
+        if(matches > 0){
+          const profit = sicboBets[key] * matches;
+          totalReturn += sicboBets[key] + profit;
+          totalProfit += profit;
+          msgs.push('Zahl ' + n + ' (' + matches + '×) gewinnt');
+        } else {
+          msgs.push('Zahl ' + n + ' verliert');
+        }
+      }
+    }
+
+    if(totalReturn > 0){ addChips(totalReturn); recordReturn(totalReturn); }
+    if(totalProfit > 0) recordWin(totalProfit);
+    if(totalReturn > 0) sfxWin(); else sfxLose();
+
+    document.getElementById('sicboMessage').textContent = 'Würfel: ' + d1 + ', ' + d2 + ', ' + d3 + ' (Summe ' + sum + ')' + (isTriple ? ' — Tripel!' : '') + '. ' + msgs.join(' · ');
+    document.getElementById('sicboMessage').className = 'message-bar' + (totalReturn>0 ? ' win' : ' lose');
+
+    sicboBets = { big:0, small:0, anytriple:0 };
+    for(let n=1;n<=6;n++) sicboBets['num'+n] = 0;
+    sicboRefreshUI();
+    stats.sicboRolls++; saveStats(); updateLobbyStats();
+    sicboRolling = false;
+    document.getElementById('sicboRollBtn').disabled = false;
+    document.getElementById('sicboClearBtn').disabled = false;
+  }
+
+  sicboRefreshUI();
 
   /* ======================================================
      PWA / SERVICE WORKER
